@@ -21,7 +21,7 @@ class PostController extends Controller
         'content' => 'required',
         'image' => 'required|image|max:300',
         'type_id' => 'required|exists:types,id',
-        "technologies" => "array|exists:technologies,id",
+        "technologies" => "required|array|exists:technologies,id",
     ];
     /**
      * Display a listing of the resource.
@@ -100,7 +100,7 @@ class PostController extends Controller
             'content' => 'required',
             'image' => 'image|required|max:300',
             'type_id' => 'required|exists:types,id',
-            "tecnologies" => "array|exists:technologies,id"
+            "tecnologies" => "required|array|exists:technologies,id"
         ]);
         if ($request->hasFile('image')){
             if (!$post->isImageAUrl()){
