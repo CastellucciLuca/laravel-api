@@ -109,6 +109,9 @@ class PostController extends Controller
             $data['image'] =  Storage::put('imgs/', $data['image']);
         }
         $post->update($data);
+        if (isset($data['technologies'])){
+            $post->technologies()->sync($data['technologies']);
+        }
         return redirect()->route('admin.posts.show', compact('post'));
     }
 
