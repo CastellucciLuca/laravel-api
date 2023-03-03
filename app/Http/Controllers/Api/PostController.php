@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index() {
-        $posts = Post::with('type','technologies')->paginate(25);
+        $posts = Post::with('type','technologies')->paginate(30);
         return response()->json([
             'success'=>true,
             'results'=>$posts
