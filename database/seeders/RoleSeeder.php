@@ -27,8 +27,8 @@ class RoleSeeder extends Seeder
         ];
         foreach ($roles as $role) {
             $newRole = new Role();
-            $newRole->name = $role['level'];
-            $newRole->name=$role['name'];
+            $newRole->level = $role['level'];
+            $newRole->name =$role['name'];
             $newRole->save();
         }
     }
