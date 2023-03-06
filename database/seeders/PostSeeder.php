@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Post;
 use App\Models\Type;
+use App\Models\User;
 use Faker\Generator as Faker;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,6 +22,7 @@ class PostSeeder extends Seeder
     {
         for ($i=0; $i < 300; $i++) { 
             $newPost = new Post();
+            $newPost->user_id = User::inRandomOrder()->first()->id;
             $newPost->type_id = Type::inRandomOrder()->first()->id ;
             $newPost->title = $faker->realTextBetween(5, 30);
             $newPost->slug = Str::slug($newPost->title);

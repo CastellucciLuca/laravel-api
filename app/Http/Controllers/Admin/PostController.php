@@ -30,7 +30,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(30);
+        if (Auth::user()->roles()->pluck('id')->contains(1) ||
+        Auth::user()->roles()->pluck('id')->contains(2)){
+            $posts = Post::paginate(30);
+        } else {
+            $posts = Post::where('user_id', Auth::user()->id)->paginate(30);
+        }
+        
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -58,6 +64,7 @@ class PostController extends Controller
         $data['image'] =  Storage::put('imgs/', $data['image']);
         $newPost = new Post();
         $newPost->fill($data);
+        $newPost['user_id'] = Auth::user()->id;
         $newPost->save();
         $newPost->technologies()->sync($data['technologies']);
         return redirect()->route('admin.posts.index');

@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
             TypeSeeder::class,
             TechnologySeeder::class,
             PostSeeder::class,
+            RoleSeeder::class,
             RoleUserSeeder::class,
             PostTechnologySeeder::class,
-            RoleSeeder::class,
         ]);
     }
 }

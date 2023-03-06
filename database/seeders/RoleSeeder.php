@@ -22,6 +22,14 @@ class RoleSeeder extends Seeder
             ],
             [
                 'level' => 2,
+                'name' => 'Editor',
+            ],
+            [
+                'level' => 3,
+                'name' => 'Publisher',
+            ],
+            [
+                'level' => 4,
                 'name' => 'User',
             ],
         ];
